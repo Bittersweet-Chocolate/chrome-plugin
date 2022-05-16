@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "快捷操作",
+  "version": "1.0.0",
+  "description": "插件大集合",
+  "icons": {
+    "48": "img/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "img/icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/jquery-3.6.0.js", "js/content-script.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "permissions": ["<all_urls>", "activeTab"]
+}
