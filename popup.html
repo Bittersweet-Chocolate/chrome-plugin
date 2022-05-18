@@ -11,7 +11,23 @@
 		<div class="content-button">
       <div class="content-button__text" id="fillAdmin">安恒-填充admin</div>
     </div>
-		<div style="flex:1"></div>
+		<div class="content-button proxy">
+      <span>代理开启</span>
+      <input id="proxyBox" type="checkbox">
+      <span style="margin-left: 5px;">当前代理：<span id="proxyText">本地代理</span></span>
+    </div>
+    <div class="content-button switch">
+      <div class="content-button__switch" id="switchProxy"><span>切换代理信息</span> <i class="app-iconfont app-icon-Next"></i></div>
+      <div class="content-button_switch">
+        <span>常用代理：</span>
+        <select id="switchEnv"></select>
+      </div>
+      <div class="content-button_switch">
+        <span>自定义代理：</span>
+        <input id="proxyByself" class="self-proxy" type="input" placeholder="默认自带前缀http">
+        <button id="proxyBtn">提交</button>
+      </div>
+    </div>
 	</div>
 	<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 	<script type="text/javascript" src="js/popup.js"></script>

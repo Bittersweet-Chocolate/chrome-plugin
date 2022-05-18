@@ -23,3 +23,34 @@
   color: #ff8e3d;
   background: #f1f1f1;
 }
+.content-button_switch {
+  display: none;
+}
+.content-button__switch {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: bold;
+}
+.content-button_switch span {
+  display: inline-block;
+  width: 100px;
+}
+.proxy {
+  cursor: default;
+  display: flex;
+  align-items: center;
+}
+.proxy span {
+  margin-right: 5px;
+}
+.switch {
+  height: auto;
+}
+#proxyText {
+  color: red
+}
+.self-proxy {
+  margin-top: 5px;
+  width: 120px;
+}
