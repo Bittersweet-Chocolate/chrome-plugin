@@ -15,9 +15,23 @@ function fillAdmin() {
 
 function messageHandler(request, sender, sendResponse) {
   const { news } = request
-  eval(`${news}()`)
+  try {
+    eval(`${news}()`)
+    sendResponse({
+      news,
+      code: 1
+    })
+  } catch (e) {
+    console.error(e)
+    sendResponse({
+      news,
+      code: -1,
+      message: (e && e.message) || '失败'
+    })
+  }
 }
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   messageHandler(request, sender, sendResponse)
+  return true
 })

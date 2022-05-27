@@ -1,12 +1,12 @@
 const Background = chrome.extension.getBackgroundPage()
 
-$('#fillAdmin').click(async () => {
+$('#fillAdmin').on('click', async () => {
   await send2Content({
     news: 'fillAdmin'
   })
 })
 
-$('#proxyBox').change(async (val) => {
+$('#proxyBox').on('change', async (val) => {
   try {
     const isOpen = val.target.checked
     val.target.disabled = true
@@ -36,8 +36,8 @@ function getCurrentTabId() {
 
 function send2Content(message, callback) {
   return new Promise((resolve) => {
-    getCurrentTabId((tabId) => {
-      chrome.tabs.sendMessage(tabId, message, function (response) {
+    getCurrentTabId().then(({ id, url }) => {
+      chrome.tabs.sendMessage(id, message, (response) => {
         if (callback) callback(response)
         resolve(response)
       })
