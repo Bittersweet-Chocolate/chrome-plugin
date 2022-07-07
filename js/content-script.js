@@ -16,7 +16,9 @@ function fillAdmin() {
 function messageHandler(request, sender, sendResponse) {
   const { news } = request
   try {
-    eval(`${news}()`)
+    // v3 版本现不支持eval new Function
+    // new Function(`${news}()`)()
+    setTimeout(`${news}()`, 1)
     sendResponse({
       news,
       code: 1
