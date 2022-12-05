@@ -1,27 +1,13 @@
-const Background = chrome.extension.getBackgroundPage()
-
 $('#fillAdmin').on('click', async () => {
   await send2Content({
     news: 'fillAdmin'
   })
 })
 
-$('#proxyBox').on('change', async (val) => {
-  try {
-    const isOpen = val.target.checked
-    val.target.disabled = true
-    const { url } = await getCurrentTabId()
-    const res = await Background.requestListener({ isOpen, url })
-    if (!res.msg) {
-      val.target.checked = !val.target.checked
-      alert('操作失败')
-    }
-  } catch (e) {
-    alert(JSON.stringify(e))
-  } finally {
-    $('#proxyText').css('color', isOpen ? 'red' : 'grey')
-    val.target.disabled = false
-  }
+$('#useVue').on('click', async () => {
+  await send2Content({
+    news: 'useVue'
+  })
 })
 
 // 获取当前选项卡ID

@@ -5,7 +5,6 @@
 .content {
   height: auto;
   min-width: 280px;
-  min-height: 90px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -21,37 +20,16 @@
   border-bottom: 1px dashed #e5e5e5;
 }
 .content-button__text:hover {
-  color: #ff8e3d;
+  color: #00AEEC;
   background: #f1f1f1;
 }
-.content-button_switch {
-  display: none;
-}
-.content-button__switch {
+.useVue {
   display: flex;
-  align-items: center;
-  font-style: normal;
-  font-weight: bold;
-}
-.content-button_switch span {
-  display: inline-block;
-  width: 100px;
-}
-.proxy {
-  cursor: default;
-  display: flex;
+  cursor: unset;
   align-items: center;
 }
-.proxy span {
-  margin-right: 5px;
-}
-.switch {
-  height: auto;
-}
-#proxyText {
-  color: red
-}
-.self-proxy {
-  margin-top: 5px;
-  width: 120px;
+#useVue {
+  cursor: pointer;
+  margin-top: 3px;
+  margin-left: 5px;
 }

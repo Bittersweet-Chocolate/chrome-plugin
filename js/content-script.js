@@ -13,6 +13,11 @@ function fillAdmin() {
   btn.click()
 }
 
+// 强制开启vue
+function useVue() {
+
+}
+
 function messageHandler(request, sender, sendResponse) {
   const { news } = request
   try {
