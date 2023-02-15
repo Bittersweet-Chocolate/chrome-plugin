@@ -5,9 +5,13 @@ $('#fillAdmin').on('click', async () => {
 })
 
 $('#useVue').on('click', async () => {
-  await send2Content({
-    news: 'useVue'
-  })
+  // const { id } = await getCurrentTabId()
+  // chrome.scripting.executeScript({
+  //   target: { tabId: id },
+  //   files: ['script/useVue.js']
+  // })
+  const src = chrome.runtime.getURL('script/useVue.js')
+  await send2Content({ news: 'useVue', src })
 })
 
 // 获取当前选项卡ID

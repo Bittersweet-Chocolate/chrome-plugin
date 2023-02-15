@@ -14,16 +14,19 @@ function fillAdmin() {
 }
 
 // 强制开启vue
-function useVue() {
-
+function useVue(src) {
+  var s = document.createElement('script')
+  s.src = src
+  var doc = document.head || document.documentElement
+  return doc.appendChild(s)
 }
 
 function messageHandler(request, sender, sendResponse) {
-  const { news } = request
+  const { news, src } = request
   try {
     // v3 版本现不支持eval new Function
     // new Function(`${news}()`)()
-    setTimeout(`${news}()`, 1)
+    setTimeout(`${news}("${src}")`, 1)
     sendResponse({
       news,
       code: 1
@@ -40,5 +43,4 @@ function messageHandler(request, sender, sendResponse) {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   messageHandler(request, sender, sendResponse)
-  return true
 })

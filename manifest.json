@@ -11,20 +11,23 @@
     "default_popup": "popup.html",
     "default_title": "快捷操作"
   },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["js/jquery-3.6.0.js", "js/content-script.js"],
-    "run_at": "document_start"
-  }],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/jquery-3.6.0.js", "js/content-script.js"],
+      "run_at": "document_start"
+    }
+  ],
   "background": {
-    "service_worker": "background.js",
-    "type": "module"
+    "service_worker": "service-worker.js"
   },
-  "permissions": ["scripting", "activeTab"],
-  "web_accessible_resources": [{
-    "resources": ["js/*.js"],
-    "matches": ["<all_urls>"]
-  }],
+  "permissions": ["scripting", "activeTab", "activeTab", "tabs"],
+  "web_accessible_resources": [
+    {
+      "resources": ["script/*.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "content_security_policy": {
     "script-src": "self unsafe-eval",
     "unsafe-eval": "object-src self",
