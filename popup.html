@@ -4,19 +4,31 @@
     <title>popup页</title>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="style/popup.css" />
   </head>
-
+  <style>
+    body {
+      width: 300px;
+      min-height: 100px;
+      font-size: 14px;
+    }
+    .content {
+      margin-bottom: 10px;
+    }
+    #btn {
+      width: auto;
+    }
+  </style>
   <body>
-    <div class="content">
-      <div class="content-button">
-        <div class="content-button__text" id="fillAdmin">安恒-填充admin</div>
-      </div>
-      <div class="content-button">
-        <div class="content-button__text" id="useVue">强制开启vue</div>
-      </div>
-    </div>
-    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
-    <script type="text/javascript" src="js/popup.js"></script>
+    <div class="content">这是popup页面</div>
+    <button id="btn">测试</button>
+    <p id="incept">暂无接收</p>
+    <button id="sBtn">通讯server-worker</button>
+    <button id="cBtn">通讯content-script</button>
+    <p id="storage">暂无数据</p>
+    <button id="getStorage">获取设置的chrome.storage</button>
+    <br />
+    <br />
+    <button id="openVue">注入开启vue_tools脚本</button>
+    <script type="text/javascript" src="popup.js"></script>
   </body>
 </html>

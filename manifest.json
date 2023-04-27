@@ -1,36 +1,51 @@
 {
   "manifest_version": 3,
-  "name": "快捷操作",
-  "version": "1.0.0",
-  "description": "插件大集合",
+  "name": "插件demo",
+  "version": "0.1.0",
+  "description": "前端分享",
   "icons": {
-    "48": "img/icon.png"
+    "48": "icon.png"
   },
   "action": {
-    "default_icon": "img/icon.png",
-    "default_popup": "popup.html",
-    "default_title": "快捷操作"
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["js/jquery-3.6.0.js", "js/content-script.js"],
-      "run_at": "document_start"
-    }
-  ],
   "background": {
     "service_worker": "service-worker.js"
   },
-  "permissions": ["scripting", "activeTab", "activeTab", "tabs"],
+  "devtools_page": "devtools/devtools.html",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage",
+    "unlimitedStorage",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"],
+      "css": [],
+      "run_at": "document_start"
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": false,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "host_permissions": ["<all_urls>"],
   "web_accessible_resources": [
     {
       "resources": ["script/*.js"],
       "matches": ["<all_urls>"]
     }
-  ],
-  "content_security_policy": {
-    "script-src": "self unsafe-eval",
-    "unsafe-eval": "object-src self",
-    "unsafe-inline": "self"
-  }
+  ]
 }
