@@ -1,7 +1,7 @@
 /*
  * @Author: czh-mac
  * @Date: 2022-12-18 19:33
- * @LastEditTime: 2023-03-23 14:23
+ * @LastEditTime: 2023-05-17 16:11
  * @Description: 头部注释
  */
 function handleResult(result, isException) {
@@ -40,4 +40,12 @@ button_message.addEventListener('click', () => {
       document.querySelector('#incept').innerHTML = res.data
     }
   )
+})
+
+button_reload.addEventListener('click', () => {
+  chrome.devtools.inspectedWindow.reload({
+    ignoreCache: false,
+    userAgent:
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/113.0.0.0 Mobile/15E148 Safari/604.1'
+  })
 })

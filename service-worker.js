@@ -1,7 +1,7 @@
 /*
  * @Author: czh-mac
  * @Date: 2022-12-18 19:13
- * @LastEditTime: 2023-02-28 09:19
+ * @LastEditTime: 2023-05-17 15:28
  * @Description: 旧 background页面
  * 不使用时终止，需要时重新启动
  * 无权访问 DOM
@@ -75,14 +75,12 @@ function setRules() {
               transform: {
                 scheme: 'http',
                 host: '192.168.10.28',
-                // host: 'mcs.snssdk.com'
                 port: '8080'
               }
             }
           },
           condition: {
             urlFilter: '||localhost:3000',
-            // domains: ['juejin.cn'],
             resourceTypes: [
               'main_frame',
               'xmlhttprequest',
