@@ -1,3 +1,10 @@
+/*
+ * @Author: czh-mac
+ * @Date: 2023-04-27 15:16
+ * @LastEditTime: 2023-11-23 15:12
+ * @Description: 头部注释
+ */
+
 $('#fillAdmin').on('click', async () => {
   await send2Content({
     news: 'fillAdmin'
@@ -26,28 +33,35 @@ $('#clearData').on('click', async () => {
   }
 })
 
-$('#showHot').on('click', async () => {
+// 获取热点数据
+let hotVal = null
+async function getHot() {
   const {
     hotVal: { list }
   } = await chrome.storage.local.get()
   if (list) {
-    const enums = {
-      wb: list[0].splice(0, 10),
-      dy: list[1].splice(0, 10),
-      bd: list[2].splice(0, 10)
+    hotVal = {
+      wb: list[0].splice(0, 20),
+      dy: list[1].splice(0, 20),
+      bd: list[2].splice(0, 20)
     }
-    const hotType = $('#hotSelect').val()
-    const hotList = $('#hotList')
-    hotList.html('')
-    // 使用.each()方法循环遍历数据
-    $.each(enums[hotType], function (index, item) {
-      // 创建一个新的li元素并将数据插入其中
-      const str = `<span data-url="${item.url}" >${item.title}</span>`
-      const li = $('<li>').html(str)
-      // 将li元素添加到目标节点中
-      hotList.append(li)
-    })
   }
+}
+function setHtml(type) {
+  const hotList = $('#hotList')
+  hotList.html('')
+  $.each(hotVal[type], function (index, item) {
+    const str = `${index + 1}：<span data-url="${item.url}" >${
+      item.title
+    }</span>`
+    const li = $('<li>').html(str)
+    hotList.append(li)
+  })
+}
+$('#showHot').on('click', async () => {
+  await getHot()
+  $('.content-tabs').css('display', 'flex')
+  setHtml('wb')
 })
 
 $('#hotList').on('click', 'span', async (e) => {
@@ -55,6 +69,14 @@ $('#hotList').on('click', 'span', async (e) => {
   const url = $(ele).data('url')
   chrome.tabs.create({ url })
 })
+
+$('.content-tabs__item').click(async function () {
+  const hotType = $(this).attr('data-tab')
+  $('.content-tabs__item').removeClass('active')
+  $(this).addClass('active')
+  setHtml(hotType)
+})
+
 // 获取当前选项卡ID
 function getCurrentTabId() {
   return new Promise((resolve, reject) => {

@@ -22,7 +22,7 @@
 }
 .content-button__text:hover {
   cursor: pointer;
-  color: #00AEEC;
+  color: #00aeec;
   background: #f1f1f1;
 }
 
@@ -31,16 +31,28 @@
   flex: 1;
 }
 
-.content-button__text.active {
-  background-color: #007bff;
+.content-tabs {
+  display: none;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-select {
-  margin-right: 10px;
-  width: 100px;
+.content-tabs__item {
+  cursor: pointer;
+  flex: 1;
+  line-height: 27px;
+  text-align: center;
 }
+
+.content-tabs__item.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
 #hotList {
   margin-top: 5px;
+  max-height: 220px;
+  overflow-y: scroll;
+  padding-left: 3px;
 }
 #hotList li {
   margin-bottom: 5px;

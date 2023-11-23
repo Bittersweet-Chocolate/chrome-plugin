@@ -1,4 +1,4 @@
 console.log('_')
-import getHot from './hot.js'
+import { setHot } from './script/hot.js'
 
-getHot()
+setHot()
