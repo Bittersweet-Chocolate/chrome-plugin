@@ -19,9 +19,16 @@
     }
   ],
   "background": {
-    "service_worker": "service-worker.js"
+    "service_worker": "service-worker.js",
+    "type": "module"
   },
-  "permissions": ["scripting", "activeTab", "activeTab", "tabs"],
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "tabs",
+    "storage",
+    "unlimitedStorage"
+  ],
   "web_accessible_resources": [
     {
       "resources": ["script/*.js"],
@@ -32,5 +39,6 @@
     "script-src": "self unsafe-eval",
     "unsafe-eval": "object-src self",
     "unsafe-inline": "self"
-  }
+  },
+  "host_permissions": ["<all_urls>"]
 }

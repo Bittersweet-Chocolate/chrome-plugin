@@ -12,14 +12,36 @@
   padding: 5px;
 }
 .content-button {
+  display: flex;
+  align-items: center;
   height: 20px;
   padding: 3px 5px 3px 5px;
   font-size: 13px;
   line-height: 20px;
-  cursor: pointer;
   border-bottom: 1px dashed #e5e5e5;
 }
 .content-button__text:hover {
+  cursor: pointer;
   color: #00AEEC;
   background: #f1f1f1;
+}
+
+.content-button__text {
+  transition: background-color 0.3s ease;
+  flex: 1;
+}
+
+.content-button__text.active {
+  background-color: #007bff;
+}
+
+select {
+  margin-right: 10px;
+  width: 100px;
+}
+#hotList {
+  margin-top: 5px;
+}
+#hotList li {
+  margin-bottom: 5px;
 }
