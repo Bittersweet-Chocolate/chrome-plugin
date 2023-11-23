@@ -1,7 +1,7 @@
 /*
  * @Author: czh-mac
  * @Date: 2023-04-27 15:16
- * @LastEditTime: 2023-11-23 15:12
+ * @LastEditTime: 2023-11-23 15:50
  * @Description: 头部注释
  */
 
@@ -51,9 +51,12 @@ function setHtml(type) {
   const hotList = $('#hotList')
   hotList.html('')
   $.each(hotVal[type], function (index, item) {
-    const str = `${index + 1}：<span data-url="${item.url}" >${
-      item.title
-    }</span>`
+    const title =
+      item.title.length > 15 ? `${item.title.substring(0, 15)}...` : item.title
+    let str = `<span data-url="${item.url}" >${index + 1}. ${title}</span>`
+    if (item.hotTagImg) {
+      str += `<img src=${item.hotTagImg} />`
+    }
     const li = $('<li>').html(str)
     hotList.append(li)
   })
@@ -63,7 +66,11 @@ $('#showHot').on('click', async () => {
   $('.content-tabs').css('display', 'flex')
   setHtml('wb')
 })
-
+$('#reloadHot').on('click', () => {
+  chrome.runtime.sendMessage({
+    reloadHot: true
+  })
+})
 $('#hotList').on('click', 'span', async (e) => {
   const ele = e.target
   const url = $(ele).data('url')

@@ -56,4 +56,13 @@
 }
 #hotList li {
   margin-bottom: 5px;
+  font-size: 13px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#hotList img {
+  height: 20px;
+  width: 20px;
 }
