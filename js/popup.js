@@ -1,7 +1,7 @@
 /*
  * @Author: czh-mac
  * @Date: 2023-04-27 15:16
- * @LastEditTime: 2023-11-23 15:50
+ * @LastEditTime: 2024-07-29 16:39
  * @Description: 头部注释
  */
 
@@ -18,7 +18,8 @@ $('#useVue').on('click', async () => {
   //   files: ['script/useVue.js']
   // })
   const src = chrome.runtime.getURL('script/useVue.js')
-  await send2Content({ news: 'useVue', src })
+  const id = $('#customId').val()
+  await send2Content({ news: 'useVue', data: { src, id } })
 })
 
 $('#clearData').on('click', async () => {

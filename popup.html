@@ -15,6 +15,9 @@
       <div class="content-button">
         <div class="content-button__text" id="useVue">强制开启vue</div>
       </div>
+      <div class="content-button custom-dom">
+        <span>自定义vue插件节点</span><input id="customId" value="#app" />
+      </div>
       <div class="content-button">
         <div class="content-button__text" id="clearData">clear存储</div>
       </div>
@@ -22,13 +25,13 @@
         <div class="content-button__text" id="showHot">展示hot信息</div>
         <div class="content-button__text" id="reloadHot">reload-Hot</div>
       </div>
-      <div class="content-tabs">
-        <div class="content-tabs__item active" data-tab="wb">微博</div>
-        <div class="content-tabs__item" data-tab="dy">抖音</div>
-        <div class="content-tabs__item" data-tab="bd">百度</div>
-      </div>
-      <ul id="hotList"></ul>
     </div>
+    <div class="content-tabs">
+      <div class="content-tabs__item active" data-tab="wb">微博</div>
+      <div class="content-tabs__item" data-tab="dy">抖音</div>
+      <div class="content-tabs__item" data-tab="bd">百度</div>
+    </div>
+    <ul id="hotList"></ul>
     <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
   </body>

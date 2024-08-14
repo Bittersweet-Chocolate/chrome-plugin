@@ -1,5 +1,10 @@
+/*
+ * @Author: czh-mac
+ * @Date: 2024-07-29 17:08
+ * @LastEditTime: 2024-07-30 14:10
+ * @Description: 头部注释
+ */
 console.log('操作已注入')
-
 // 注入用户名，密码
 function fillAdmin() {
   // var evt = document.createEvent('HTMLEvents')
@@ -14,19 +19,23 @@ function fillAdmin() {
 }
 
 // 强制开启vue
-function useVue(src) {
+function useVue(data) {
   var s = document.createElement('script')
+  const { src, id } = data
   s.src = src
+  if (id) {
+    window.sessionStorage.setItem('__SELF_DEVTOOLS__VUE__ID', id)
+  }
   var doc = document.head || document.documentElement
   doc.appendChild(s)
 }
 
 function messageHandler(request, sender, sendResponse) {
-  const { news, src } = request
+  const { news, data = {} } = request
   try {
     // v3 版本现不支持eval new Function
     // new Function(`${news}()`)()
-    setTimeout(`${news}("${src}")`, 1)
+    setTimeout(`${news}(${JSON.stringify(data)})`, 1)
     sendResponse({
       news,
       code: 1

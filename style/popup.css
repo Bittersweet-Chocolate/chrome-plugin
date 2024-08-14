@@ -48,6 +48,13 @@
   color: #fff;
 }
 
+.custom-dom span {
+  flex: 1;
+}
+.custom-dom input {
+  width: 120px;
+}
+
 #hotList {
   margin-top: 5px;
   max-height: 220px;
