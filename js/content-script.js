@@ -1,7 +1,7 @@
 /*
  * @Author: czh-mac
  * @Date: 2024-07-29 17:08
- * @LastEditTime: 2024-07-30 14:10
+ * @LastEditTime: 2024-09-23 16:59
  * @Description: 头部注释
  */
 console.log('操作已注入')
@@ -32,6 +32,7 @@ function useVue(data) {
 
 function messageHandler(request, sender, sendResponse) {
   const { news, data = {} } = request
+  if (!news) return
   try {
     // v3 版本现不支持eval new Function
     // new Function(`${news}()`)()

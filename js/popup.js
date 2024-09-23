@@ -1,9 +1,10 @@
 /*
  * @Author: czh-mac
  * @Date: 2023-04-27 15:16
- * @LastEditTime: 2024-07-29 16:39
+ * @LastEditTime: 2024-09-23 17:21
  * @Description: 头部注释
  */
+import { setHot } from '../script/hot.js'
 
 $('#fillAdmin').on('click', async () => {
   await send2Content({
@@ -28,26 +29,13 @@ $('#clearData').on('click', async () => {
     const res = await chrome.storage.local.get()
     if (!Object.keys(res).length) {
       alert('清除成功')
+      $('.content-tabs').css('display', 'none')
     }
   } catch (e) {
     console.error(e)
   }
 })
 
-// 获取热点数据
-let hotVal = null
-async function getHot() {
-  const {
-    hotVal: { list }
-  } = await chrome.storage.local.get()
-  if (list) {
-    hotVal = {
-      wb: list[0].splice(0, 20),
-      dy: list[1].splice(0, 20),
-      bd: list[2].splice(0, 20)
-    }
-  }
-}
 function setHtml(type) {
   const hotList = $('#hotList')
   hotList.html('')
@@ -62,16 +50,24 @@ function setHtml(type) {
     hotList.append(li)
   })
 }
-$('#showHot').on('click', async () => {
-  await getHot()
+
+// 获取热点数据
+let hotVal = null
+async function hotLoad() {
+  hotVal = await setHot()
   $('.content-tabs').css('display', 'flex')
+  $('.content-tabs__item').removeClass('active')
+  $('.content-tabs__item').eq(0).addClass('active')
   setHtml('wb')
-})
+}
+
+// 初始化获取热点信息
+hotLoad()
+
 $('#reloadHot').on('click', () => {
-  chrome.runtime.sendMessage({
-    reloadHot: true
-  })
+  hotLoad()
 })
+
 $('#hotList').on('click', 'span', async (e) => {
   const ele = e.target
   const url = $(ele).data('url')
